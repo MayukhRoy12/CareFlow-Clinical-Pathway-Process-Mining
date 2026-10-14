@@ -1,0 +1,4 @@
+Clinical_Pathway,Patient_Count
+ER Triage -> Initial Clinical Assessment -> Blood Test & Lab Work -> Diagnostic Imaging (X-Ray/CT) -> Specialist Consultation -> Medication Administration -> Discharge Assessment -> Post-Care Discharge,246
+ER Triage -> Initial Clinical Assessment -> Blood Test & Lab Work -> Diagnostic Imaging (X-Ray/CT) -> Specialist Consultation -> Surgical Intervention -> Inpatient Bed Admission -> Discharge Assessment -> Post-Care Discharge,129
+ER Triage -> Initial Clinical Assessment -> Blood Test & Lab Work -> Specialist Consultation -> Medication Administration -> Discharge Assessment -> Post-Care Discharge,125
