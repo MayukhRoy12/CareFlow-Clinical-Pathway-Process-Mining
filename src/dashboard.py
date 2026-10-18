@@ -63,3 +63,6 @@ if not df.empty:
             hide_index=True,
             use_container_width=True
         )
+
+    st.markdown("---")
+    st.caption("CareFlow Process Mining Dashboard - Infotact Solutions Data Analytics Internship")
