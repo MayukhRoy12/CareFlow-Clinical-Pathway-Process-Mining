@@ -3,8 +3,22 @@ import random
 from datetime import datetime, timedelta
 import pandas as pd
 
-
 def generate_clinical_event_log(num_patients=500, random_seed=42):
+    """
+    Generates a synthetic healthcare event log for clinical process mining analysis.
+    
+    This function simulates a realistic clinical pathway for patients entering
+    an Emergency Department, moving through diagnostics, specialist consultations,
+    and eventual discharge. It applies randomized wait times and bottlenecks based
+    on patient severity to create realistic variance in the event log.
+    
+    Args:
+        num_patients (int): The total number of patient cases to generate.
+        random_seed (int): Seed for reproducibility of the randomized pathways.
+        
+    Returns:
+        None. Exports a raw CSV file directly to the 'data/' directory.
+    """
     random.seed(random_seed)
 
     activities_pool = [
