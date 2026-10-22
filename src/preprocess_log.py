@@ -3,6 +3,19 @@ import pm4py
 import os
 
 def preprocess_event_log(input_path="data/raw_clinical_events.csv", output_dir="data"):
+    """
+    Cleans raw clinical event logs and standardizes them for process mining.
+    
+    This function reads the generated CSV data, converts timestamps into valid 
+    datetime objects, sorts the events chronologically by Case ID, and renames 
+    the columns to adhere to the standard PM4Py terminology (case:concept:name, 
+    concept:name, time:timestamp). It outputs both a cleaned CSV and a standard 
+    XES file for advanced pathway analysis.
+    
+    Args:
+        input_path (str): File path to the raw clinical events CSV.
+        output_dir (str): Directory where the cleaned CSV and XES files are saved.
+    """
     print(f"Loading raw data from {input_path}...")
     df = pd.read_csv(input_path)
 
