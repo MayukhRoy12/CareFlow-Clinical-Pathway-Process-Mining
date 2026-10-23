@@ -3,6 +3,19 @@ import matplotlib.pyplot as plt
 import os
 
 def analyze_clinical_pathways(csv_path="data/cleaned_clinical_events.csv", report_dir="reports"):
+    """
+    Executes Exploratory Data Analysis (EDA) on the cleaned clinical event log.
+    
+    This function calculates the total frequency of each clinical activity and 
+    extracts the most common patient treatment variants (pathways). It generates 
+    a bar chart for activity volumes and exports a CSV mapping the exact sequence 
+    of events followed by patients, ordered by frequency, to highlight standard 
+    care pathways versus deviations.
+    
+    Args:
+        csv_path (str): File path to the cleaned standard event log CSV.
+        report_dir (str): Directory where the generated charts and CSVs are saved.
+    """
     print("Loading cleaned event data...")
     df = pd.read_csv(csv_path)
     
