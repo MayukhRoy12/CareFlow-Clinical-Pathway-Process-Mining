@@ -3,6 +3,19 @@ import matplotlib.pyplot as plt
 import os
 
 def analyze_performance(csv_path="data/cleaned_clinical_events.csv", report_dir="reports"):
+    """
+    Calculates patient throughput times and identifies clinical bottlenecks.
+    
+    This function analyzes the time elapsed between consecutive clinical events
+    to measure the overall throughput duration for each patient. It also calculates
+    the average waiting times between specific pathway transitions, exposing the 
+    most severe bottlenecks in the healthcare system. It outputs a comprehensive
+    throughput CSV and a horizontal bar chart of the top 10 bottlenecks.
+    
+    Args:
+        csv_path (str): File path to the cleaned standard event log CSV.
+        report_dir (str): Directory where the generated performance reports are saved.
+    """
     print("Loading event data for performance analysis...")
     df = pd.read_csv(csv_path)
     
