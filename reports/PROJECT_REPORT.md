@@ -1,10 +1,15 @@
 # CareFlow: Clinical Pathway Process Mining - Final Project Report
 
 ## 1. Executive Summary
-*(To be completed: High-level overview of the project objectives, the dataset generated, and the primary business insights discovered regarding clinical bottlenecks.)*
+The CareFlow project applies advanced Process Mining techniques to healthcare event logs to discover, map, and optimize patient treatment journeys. By analyzing a synthetic dataset representing 500 patient cases in an Emergency Department setting, this project successfully identified key clinical pathways and exposed critical operational bottlenecks. The resulting interactive dashboard provides actionable business insights, enabling healthcare administrators to visualize patient throughput, track care deviations, and target specific delays (such as imaging and inpatient bed admission wait times) for workflow optimization.
 
 ## 2. Methodology
-*(To be completed: Explanation of the Process Mining framework, tools utilized (PM4Py, Pandas, Streamlit), and the approach to converting raw healthcare data into actionable event logs.)*
+This project utilizes a robust Data Analytics workflow centered around Process Mining. The methodology involves:
+* **Data Engineering:** Utilizing Python and `pandas` to generate, clean, and chronologically sequence clinical event logs.
+* **Standardization:** Leveraging the `pm4py` library to format the raw data into the industry-standard XES (eXtensible Event Stream) format.
+* **Process Discovery:** Applying frequency analysis to extract the most common variants of patient care and identify deviations from standard clinical protocols.
+* **Performance Analysis:** Calculating throughput times and transition delays to pinpoint inefficiencies.
+* **Visualization:** Developing an interactive web-based dashboard using `streamlit` to democratize access to the generated analytics.
 
 ## 3. Data Pipeline & Preprocessing
 * **Data Generation:** Synthetic dataset representing 500 patient journeys through an Emergency Department.
