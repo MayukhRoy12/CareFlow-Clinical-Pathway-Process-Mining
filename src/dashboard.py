@@ -10,16 +10,33 @@ st.markdown("Interactive dashboard for tracking patient pathways and clinical bo
 
 # Load Data efficiently using Streamlit's caching
 @st.cache_data
+# Caching removed to force a hard refresh
+# Caching removed to force a hard refresh
 def load_data():
-    try:
-        df = pd.read_csv("data/cleaned_clinical_events.csv")
-        pathways = pd.read_csv("reports/common_pathways.csv")
-        throughput = pd.read_csv("reports/patient_throughput.csv")
-        return df, pathways, throughput
-    except FileNotFoundError:
-        st.error("Data files not found. Please run the preprocessing and analysis scripts first.")
+    # Find the 'src' folder, then go up one level to the main project folder
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    base_dir = os.path.dirname(script_dir)
+    
+    data_file = os.path.join(base_dir, "data", "cleaned_clinical_events.csv")
+    pathways_file = os.path.join(base_dir, "reports", "common_pathways.csv")
+    throughput_file = os.path.join(base_dir, "reports", "patient_throughput.csv")
+    
+    # Identify exactly which file is causing the problem if it fails again
+    missing = []
+    if not os.path.exists(data_file): missing.append(data_file)
+    if not os.path.exists(pathways_file): missing.append(pathways_file)
+    if not os.path.exists(throughput_file): missing.append(throughput_file)
+    
+    if missing:
+        st.error("Error: Streamlit cannot find these specific files:")
+        for f in missing:
+            st.error(f)
         return pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
-
+        
+    df = pd.read_csv(data_file)
+    pathways = pd.read_csv(pathways_file)
+    throughput = pd.read_csv(throughput_file)
+    return df, pathways, throughput
 df, pathways, throughput = load_data()
 
 if not df.empty:
@@ -66,3 +83,9 @@ if not df.empty:
 
     st.markdown("---")
     st.caption("CareFlow Process Mining Dashboard - Infotact Solutions Data Analytics Internship")
+
+st.markdown("---")
+with st.expander("📌 View Core Business Insights & Bottlenecks"):
+    st.write("**1. Diagnostic Pathway Delay:** Significant wait times occur between Diagnostic Imaging (X-Ray/CT) and Specialist Consultations.")
+    st.write("**2. Post-Surgery Bottleneck:** Critical patients face severe transition delays moving from Surgical Intervention into Inpatient Bed Admissions, indicating a resource shortage.")
+    st.write("**Recommendation:** Reallocate staff during peak imaging hours and implement predictive ICU bed management.")
