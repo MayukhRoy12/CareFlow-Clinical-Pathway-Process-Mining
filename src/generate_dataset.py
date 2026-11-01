@@ -206,4 +206,14 @@ def generate_clinical_event_log(num_patients=500, random_seed=42):
 
 
 if __name__ == "__main__":
-    generate_clinical_event_log()
+    try:
+        print("Starting synthetic clinical data generation pipeline...")
+        # Ensure the output directory exists before generating data
+        os.makedirs("data", exist_ok=True)
+        
+        # Execute the main generation function
+        generate_clinical_event_log(num_patients=500, random_seed=42)
+        
+        print("Data generation pipeline executed successfully.")
+    except Exception as e:
+        print(f"CRITICAL ERROR: Failed to generate event log. Details: {e}")
