@@ -51,4 +51,13 @@ def preprocess_event_log(input_path="data/raw_clinical_events.csv", output_dir="
     print(f"XES Event Log saved successfully to: {xes_path}")
 
 if __name__ == "__main__":
-    preprocess_event_log()
+    try:
+        print("Starting clinical event log preprocessing...")
+        # Execute the main preprocessing function
+        preprocess_event_log()
+        
+        print("Preprocessing and XES conversion completed successfully.")
+    except FileNotFoundError:
+        print("CRITICAL ERROR: Raw data file not found. Please run generate_dataset.py first.")
+    except Exception as e:
+        print(f"CRITICAL ERROR: Failed to preprocess event log. Details: {e}")
