@@ -53,4 +53,16 @@ def analyze_clinical_pathways(csv_path="data/cleaned_clinical_events.csv", repor
     print(f"Pathway variants report saved to: {variants_path}")
 
 if __name__ == "__main__":
-    analyze_clinical_pathways()
+    try:
+        print("Starting exploratory data analysis and process discovery...")
+        # Ensure the reports directory exists before saving charts
+        os.makedirs("reports", exist_ok=True)
+        
+        # Execute the main analysis function
+        analyze_clinical_pathways()
+        
+        print("Process discovery and EDA completed successfully.")
+    except FileNotFoundError:
+        print("CRITICAL ERROR: Cleaned data file not found. Please run preprocessing first.")
+    except Exception as e:
+        print(f"CRITICAL ERROR: Failed to execute process discovery. Details: {e}")
