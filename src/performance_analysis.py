@@ -61,4 +61,16 @@ def analyze_performance(csv_path="data/cleaned_clinical_events.csv", report_dir=
     print(f"Bottleneck chart saved to: {bottleneck_chart_path}")
 
 if __name__ == "__main__":
-    analyze_performance()
+    try:
+        print("Starting performance and bottleneck analysis...")
+        # Ensure the reports directory exists before saving charts
+        os.makedirs("reports", exist_ok=True)
+        
+        # Execute the main performance function
+        analyze_performance()
+        
+        print("Performance analysis and bottleneck identification completed successfully.")
+    except FileNotFoundError:
+        print("CRITICAL ERROR: Cleaned data file not found. Please run preprocessing first.")
+    except Exception as e:
+        print(f"CRITICAL ERROR: Failed to execute performance analysis. Details: {e}")
