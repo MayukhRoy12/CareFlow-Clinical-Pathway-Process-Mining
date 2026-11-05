@@ -25,3 +25,12 @@ CareFlow-Project/
 │   └── dashboard.py           # Streamlit interactive dashboard
 ├── requirements.txt           # Python dependencies
 └── README.md                  # Project documentation
+
+## Execution Guide
+To run the complete CareFlow process mining pipeline locally, execute the following commands in order from the project root directory:
+
+1. **Generate Synthetic Data:** `python src/generate_dataset.py`
+2. **Preprocess and Standardize:** `python src/preprocess_log.py`
+3. **Run Process Discovery:** `python src/process_discovery.py`
+4. **Analyze Bottlenecks:** `python src/performance_analysis.py`
+5. **Launch the Dashboard:** `streamlit run src/dashboard.py`
